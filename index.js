@@ -42,7 +42,7 @@ async function run() {
             res.json(students);
         });
 
-        //GET  PRODUCTS BY ID
+        /* //GET  PRODUCTS BY ID
         app.get('/manageProducts/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
@@ -73,7 +73,7 @@ async function run() {
                 isAdmin = true;
             }
             res.json({ admin: isAdmin });
-        })
+        }) */
 
         //POST
 
@@ -84,7 +84,7 @@ async function run() {
             res.json(result)
         });
 
-        //ADD NEW USER
+        /* //ADD NEW USER
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -135,7 +135,7 @@ async function run() {
             const query = { _id: ObjectId(id) };
             const result = await studentCollection.deleteOne(query);
             res.json(result);
-        });
+        }); */
 
     }
     finally {
