@@ -102,6 +102,13 @@ async function run() {
             res.json(result);
         })
 
+        app.delete('/allStudents/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await studentCollection.deleteOne(query);
+            res.json(result);
+        });
+
         /* //ADD NEW USER
         app.post('/users', async (req, res) => {
             const user = req.body;
