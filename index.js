@@ -42,6 +42,13 @@ async function run() {
             res.json(students);
         });
 
+        app.get('/manageStudents/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const product = await studentCollection.findOne(query);
+            res.json(product);
+        });
+
         /* //GET  PRODUCTS BY ID
         app.get('/manageProducts/:id', async (req, res) => {
             const id = req.params.id;
@@ -83,6 +90,17 @@ async function run() {
             const result = await studentCollection.insertOne(student);
             res.json(result)
         });
+
+        app.put('/allStudents/:id', async (req, res) => {
+            const id = req.params.id;
+            const product = req.body;
+            const filter = { _id: ObjectId(id) }
+            const updateDoc = {
+                $set: { ...product }
+            };
+            const result = await studentCollection.updateOne(filter, updateDoc);
+            res.json(result);
+        })
 
         /* //ADD NEW USER
         app.post('/users', async (req, res) => {
